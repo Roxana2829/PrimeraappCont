@@ -34,13 +34,20 @@ class MainActivity4 : AppCompatActivity() {
         btnincrementar.setOnClickListener {
             contador++
             tvContador.text = "$contador"
+            if (!btndecrementar.isEnabled){
+                btndecrementar.isEnabled = true
+            }
             Log.d("contador","$contador")
         }
 
         btndecrementar.setOnClickListener {
-               contador--
-               tvContador.text = "$contador"
-            Log.d("contador","$contador")
+            if (contador < 1) {
+                btndecrementar.isEnabled = false
+            } else {
+                contador--
+            }
+            tvContador.text = "$contador"
+
         }
 
         tercerBoton.setOnClickListener(View.OnClickListener {
